@@ -3,3 +3,4 @@ conf
 sftp-config.json
 node_modules
 bower_components
+dist

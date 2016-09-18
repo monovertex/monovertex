@@ -1,0 +1,12 @@
+{
+    "browser": true,
+    "globals": {
+        "console": true,
+        "grunt": true,
+        "require": true,
+        "module": true
+    },
+    "strict": false,
+    "undef": true,
+    "unused": false
+}
