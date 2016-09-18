@@ -1,0 +1,101 @@
+
+.column-content {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    > * {
+        flex: 0 0 auto;
+        width: 100%;
+        padding: 0 15px;
+        text-align: center;
+    }
+
+    .logo-wrapper {
+        height: (100% / 3);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: stretch;
+
+        .logo {
+            flex: 0 0 auto;
+
+            img {
+                width: 100%;
+                max-width: 35%;
+                min-width: 1px;
+            }
+        }
+    }
+
+    .title {
+        padding: 80px 0;
+        text-transform: uppercase;
+        color: $primary-text-color;
+        font-size: 36px;
+    }
+
+    .description {
+        flex: 1 1 auto;
+        font-size: 30px;
+        color: $secondary-text-color;
+
+        p {
+            margin: 0 0 30px 0;
+        }
+
+        .small {
+            font-size: 26px;
+        }
+    }
+
+    .links-wrapper {
+        margin-bottom: 30px;
+        display: flex;
+        justify-content: center;
+
+        .links {
+            display: inline-block;
+            text-align: left;
+            flex: 0 0 auto;
+
+            .link-wrapper {
+                display: block;
+                margin-bottom: 18px;
+
+                a {
+                    display: inline-block;
+                    font-size: 26px;
+
+                    i {
+                        font-size: 30px;
+                        margin-right: 8px;
+                        vertical-align: top;
+                        opacity: 0.4;
+                        transition: opacity $transition-duration;
+                    }
+
+                    &:hover {
+                        i {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+.primary .column-content {
+    .description {
+        p {
+            margin-bottom: 8px;
+        }
+    }
+}

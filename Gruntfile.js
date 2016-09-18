@@ -30,6 +30,12 @@ module.exports = function (grunt) {
                         src: '**',
                         dest: '<%= targets.public.dist %>'
                     },
+                    {
+                        expand: true,
+                        cwd: './bower_components/font-awesome/fonts/',
+                        src: '**',
+                        dest: '<%= targets.public.dist %>/assets/fonts/'
+                    },
                 ],
             },
         },
