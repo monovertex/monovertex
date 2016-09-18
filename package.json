@@ -1,0 +1,9 @@
+{
+    "name": "monovertex",
+    "version": "1.0.0",
+    "description": "",
+    "private": true,
+    "main": "Gruntfile.js",
+    "author": "Stamate Cosmin",
+    "license": "MIT"
+}
