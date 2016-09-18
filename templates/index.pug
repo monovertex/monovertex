@@ -1,0 +1,39 @@
+include mixins/column.pug
+
+doctype html
+
+html
+    meta(charset='utf-8')
+    meta(http-equiv='x-ua-compatible' content='ie-edge')
+    meta(
+        name='description'
+        content='Monovertex - developer, computer afficionado, jack of all trades.'
+    )
+    meta(
+        name='viewport'
+        content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'
+    )
+
+    title Monovertex
+
+    link(rel='stylesheet'
+        href='https://fonts.googleapis.com/css?family=Open+Sans')
+    link(rel='stylesheet'
+        href='/assets/styles.css')
+
+    body
+        .content-wrapper
+            +column(
+                '/assets/images/logo-monovertex.png',
+                'Monovertex')(class='primary')
+
+            +column(
+                '/assets/images/logo-sunforgecards.png',
+                'Sunforge Cards')
+
+            +column(
+                '/assets/images/logo-ygorganizer.png',
+                'YGORganizer')
+
+        if debug
+            script(src='//localhost:35729/livereload.js')

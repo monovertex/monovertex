@@ -14,6 +14,10 @@ module.exports = function (grunt) {
             public: {
                 src: '<%= targets.sourceBase %>public/',
                 dist: '<%= targets.distBase %>'
+            },
+            templates: {
+                src: '<%= targets.sourceBase %>templates/',
+                dist: '<%= targets.distBase %>index.html'
             }
         },
 
@@ -48,8 +52,7 @@ module.exports = function (grunt) {
                     sourceMap: true
                 },
                 files: {
-                    '<%= targets.styles.dist %>':
-                        '<%= targets.styles.src %>main.scss'
+                    '<%= targets.styles.dist %>': '<%= targets.styles.src %>main.scss'
                 }
             },
             prod: {
@@ -85,6 +88,29 @@ module.exports = function (grunt) {
             }
         },
 
+        pug: {
+            dev: {
+                options: {
+                    pretty: true,
+                    data: {
+                        debug: true
+                    }
+                },
+                files: {
+                    '<%= targets.templates.dist %>':
+                        ['<%= targets.templates.src %>index.pug']
+                }
+            },
+            prod: {
+                options: {
+                    data: {
+                        debug: false
+                    }
+                },
+                files: '<%= pug.dev.files %>'
+            }
+        },
+
         htmlmin: {
             dist: {
                 options: {
@@ -107,6 +133,12 @@ module.exports = function (grunt) {
                 ],
                 tasks: ['styles']
             },
+            templates: {
+                files: [
+                    '<%= targets.templates.src %>**/*.pug',
+                ],
+                tasks: ['pug:dev']
+            },
             public: {
                 files: [
                     '<%= targets.public.src %>**'
@@ -120,9 +152,9 @@ module.exports = function (grunt) {
 
     grunt.registerTask('styles', ['sass:dev', 'postcss:dev']);
 
-    grunt.registerTask('default', ['clean', 'styles', 'copy']);
+    grunt.registerTask('default', ['clean', 'styles', 'pug:dev', 'copy']);
 
     grunt.registerTask('prod', ['clean', 'sass:prod', 'postcss:prod',
-        'copy', 'htmlmin']);
+        'copy', 'pug:prod', 'htmlmin']);
 
 };

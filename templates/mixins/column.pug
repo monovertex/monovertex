@@ -1,0 +1,11 @@
+
+mixin column(logo, title)
+    .column(class!=attributes.class)
+        .column-content
+            section.logo-wrapper
+                .logo
+                    img(src=logo alt=title)
+
+            .info
+                .info-content
+                    section.title= title
