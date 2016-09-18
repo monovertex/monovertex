@@ -79,6 +79,18 @@ module.exports = function (grunt) {
             }
         },
 
+        htmlmin: {
+            dist: {
+                options: {
+                    removeComments: true,
+                    collapseWhitespace: true
+                },
+                files: {
+                    '<%= targets.distBase %>index.html': '<%= targets.distBase %>index.html',
+                }
+            }
+        },
+
         watch: {
             styles: {
                 files: [
@@ -86,6 +98,12 @@ module.exports = function (grunt) {
                 ],
                 tasks: ['styles']
             },
+            public: {
+                files: [
+                    '<%= targets.public.src %>**'
+                ],
+                tasks: ['copy']
+            }
         }
     });
 
@@ -95,6 +113,7 @@ module.exports = function (grunt) {
 
     grunt.registerTask('default', ['clean', 'styles', 'copy']);
 
-    grunt.registerTask('prod', ['clean', 'sass:prod', 'postcss:prod', 'copy']);
+    grunt.registerTask('prod', ['clean', 'sass:prod', 'postcss:prod',
+        'copy', 'htmlmin']);
 
 };
