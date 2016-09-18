@@ -98,6 +98,9 @@ module.exports = function (grunt) {
         },
 
         watch: {
+            options: {
+                livereload: true,
+            },
             styles: {
                 files: [
                     '<%= targets.styles.src %>**/*.scss',

@@ -1,0 +1,14 @@
+
+@mixin absolute-cover($centerY: false) {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+
+    @if $centerY {
+        top: 50%;
+        transform: translateY(-50%);
+    } @else {
+        top: 0;
+    }
+}

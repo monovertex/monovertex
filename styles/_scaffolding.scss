@@ -37,3 +37,26 @@ body,
     }
 }
 
+@media all and (max-width: $breakpoint-medium) {
+    .content-wrapper {
+        flex-direction: column;
+    }
+
+    .column {
+        height: (100% / 3);
+
+        &.primary {
+            flex-grow: 1;
+        }
+    }
+}
+
+@media all and (max-width: $breakpoint-small) {
+    .content-wrapper {
+        display: block;
+    }
+
+    .column {
+        height: auto;
+    }
+}

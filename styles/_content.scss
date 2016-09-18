@@ -1,10 +1,6 @@
 
 .column-content {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+    @include absolute-cover;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,8 +8,27 @@
     > * {
         flex: 0 0 auto;
         width: 100%;
-        padding: 0 14%;
         text-align: center;
+    }
+
+    @media all and (max-width: $breakpoint-medium) {
+        flex-direction: row;
+        justify-content: space-between;
+
+        > * {
+            flex: 1 1 auto;
+            width: auto;
+            height: 100%;
+        }
+    }
+
+    @media all and (max-width: $breakpoint-small) {
+        position: relative;
+        display: block;
+
+        > * {
+            height: auto;
+        }
     }
 
     .logo-wrapper {
@@ -24,12 +39,86 @@
         align-items: stretch;
 
         .logo {
-            flex: 0 0 auto;
+            padding-top: 20px;
 
             img {
                 max-height: 250px;
                 height: 100%;
+                vertical-align: top;
             }
+        }
+
+        @media all and (max-width: $breakpoint-large) {
+            height: (100% / 5);
+
+            .logo {
+                height: 100%;
+            }
+        }
+
+        @media all and (max-width: $breakpoint-medium) {
+            display: block;
+            height: auto;
+            padding: 0;
+            flex: 0 0 auto;
+
+            .logo {
+                padding: 0 0 0 15px;
+                height: auto;
+
+                img {
+                    max-height: initial;
+                    height: auto;
+                    width: 160px;
+                }
+            }
+        }
+
+        @media all and (max-width: $breakpoint-small) {
+            padding-top: 30px;
+        }
+    }
+
+    .info {
+        flex: 1 1 auto;
+        position: relative;
+
+        .info-content {
+            @include absolute-cover;
+            padding: 0 14%;
+
+            @media all and (max-width: $breakpoint-large) {
+                padding: 0 9%;
+            }
+
+            @media all and (max-width: $breakpoint-medium) {
+                @include absolute-cover();
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                padding: 0 50px 0 30px;
+                text-align: left;
+                max-width: 600px;
+
+                > * {
+                    flex: 0 0 auto;
+                }
+            }
+
+            @media all and (max-width: $breakpoint-small) {
+                position: relative;
+                text-align: center;
+                max-width: initial;
+                display: block;
+                padding: 0 20px;
+                max-width: 500px;
+                margin: 0 auto;
+            }
+        }
+
+        @media all and (max-width: $breakpoint-small) {
+            margin: 30px 0 40px;
+            text-align: center;
         }
     }
 
@@ -37,20 +126,27 @@
         padding: 80px 0;
         text-transform: uppercase;
         color: $primary-text-color;
-        font-size: 36px;
+        font-size: 1.4rem;
+
+        @media all and (max-width: $breakpoint-medium) {
+            padding: 0 0 30px 0;
+        }
     }
 
     .description {
-        flex: 1 1 auto;
-        font-size: 30px;
+        font-size: 1.3rem;
         color: $secondary-text-color;
 
         p {
             margin: 0 0 30px 0;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
         }
 
         .small {
-            font-size: 22px;
+            font-size: 0.85rem;
         }
     }
 
@@ -58,6 +154,21 @@
         margin-bottom: 30px;
         display: flex;
         justify-content: center;
+
+        @media all and (max-width: $breakpoint-medium) {
+            flex: 0 0 auto;
+            padding: 0 15px 0 0;
+            height: auto;
+            margin-bottom: 0;
+            justify-content: flex-start;
+            width: 350px;
+        }
+
+        @media all and (max-width: $breakpoint-small) {
+            width: auto;
+            justify-content: center;
+            padding-bottom: 30px;
+        }
     }
 
     .links {
@@ -72,10 +183,10 @@
 
         a {
             display: inline-block;
-            font-size: 26px;
+            font-size: 1rem;
 
             i {
-                font-size: 30px;
+                font-size: 1.3rem;
                 margin-right: 8px;
                 vertical-align: top;
                 opacity: 0.2;
@@ -96,6 +207,22 @@
             a {
                 margin: 0 15px;
             }
+
+            @media all and (max-width: $breakpoint-medium) {
+                text-align: left;
+
+                a {
+                    &:first-child {
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
+
+        @media all and (max-width: $breakpoint-medium) {
+            &.placeholder {
+                display: none;
+            }
         }
     }
 }
@@ -106,7 +233,7 @@
             margin-bottom: 8px;
 
             &.small {
-                font-size: 26px;
+                font-size: 1.1rem;
             }
         }
     }

@@ -1,4 +1,20 @@
 
+html {
+    font-size: 24px;
+
+    @media all and (max-width: $breakpoint-large) {
+        font-size: 20px;
+    }
+
+    @media all and (max-width: $breakpoint-medium) {
+        font-size: 18px;
+    }
+
+    @media all and (max-width: $breakpoint-xsmall) {
+        font-size: 12px;
+    }
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
     letter-spacing: 1.5px;
