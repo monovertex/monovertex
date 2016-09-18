@@ -20,3 +20,15 @@ a {
         color: $highlight-color;
     }
 }
+
+* {
+    box-sizing: border-box;
+}
+
+.non-breaking {
+    white-space: nowrap;
+}
+
+.hidden {
+    visibility: hidden;
+}

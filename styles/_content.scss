@@ -12,7 +12,7 @@
     > * {
         flex: 0 0 auto;
         width: 100%;
-        padding: 0 15px;
+        padding: 0 14%;
         text-align: center;
     }
 
@@ -27,9 +27,8 @@
             flex: 0 0 auto;
 
             img {
-                width: 100%;
-                max-width: 35%;
-                min-width: 1px;
+                max-height: 250px;
+                height: 100%;
             }
         }
     }
@@ -51,7 +50,7 @@
         }
 
         .small {
-            font-size: 26px;
+            font-size: 22px;
         }
     }
 
@@ -59,34 +58,43 @@
         margin-bottom: 30px;
         display: flex;
         justify-content: center;
+    }
 
-        .links {
+    .links {
+        display: inline-block;
+        text-align: left;
+        flex: 0 0 auto;
+    }
+
+    .link-wrapper {
+        display: block;
+        margin-bottom: 18px;
+
+        a {
             display: inline-block;
-            text-align: left;
-            flex: 0 0 auto;
+            font-size: 26px;
 
-            .link-wrapper {
-                display: block;
-                margin-bottom: 18px;
+            i {
+                font-size: 30px;
+                margin-right: 8px;
+                vertical-align: top;
+                opacity: 0.2;
+                transition: opacity $transition-duration;
+            }
 
-                a {
-                    display: inline-block;
-                    font-size: 26px;
-
-                    i {
-                        font-size: 30px;
-                        margin-right: 8px;
-                        vertical-align: top;
-                        opacity: 0.4;
-                        transition: opacity $transition-duration;
-                    }
-
-                    &:hover {
-                        i {
-                            opacity: 1;
-                        }
-                    }
+            &:hover {
+                i {
+                    opacity: 1;
                 }
+            }
+        }
+
+        &.icon-links {
+            width: 100%;
+            text-align: center;
+
+            a {
+                margin: 0 15px;
             }
         }
     }
@@ -96,6 +104,10 @@
     .description {
         p {
             margin-bottom: 8px;
+
+            &.small {
+                font-size: 26px;
+            }
         }
     }
 }
