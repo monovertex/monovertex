@@ -5,6 +5,7 @@
             "primary": true,
             "logoPath": "/assets/images/logo-monovertex.png",
             "title": "Monovertex",
+            "link": "/",
             "info": [
                 { "text": "Stamate Cosmin-Stefan" },
                 { "text": "Web Developer", "class": "small" }
@@ -30,6 +31,7 @@
         {
             "logoPath": "/assets/images/logo-sunforgecards.png",
             "title": "Sunforge Cards",
+            "link": "http://sunforgecards.com",
             "info": [
                 { "text": "I create 3D Hearthstone and <span class=\"non-breaking\">Yu-Gi-Oh!</span> cards or shadowboxes, as well as general paper craft.", "class": "small" },
                 { "text": "Follow my media channels to see more of my work!", "class": "small" }
@@ -57,6 +59,7 @@
         {
             "logoPath": "/assets/images/logo-ygorganizer.png",
             "title": "YGORganizer",
+            "link": "http://ygorganizer.com",
             "info": [
                 { "text": "A <span class=\"non-breaking\">Yu-Gi-Oh!</span> card collection organizer, with card and price information constantly updated.", "class": "small" },
                 { "text": "Allows users to import and manage their personal collections.", "class": "small" }

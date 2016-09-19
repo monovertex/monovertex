@@ -1,0 +1,12 @@
+
+mixin link(href, newTab)
+    if href.indexOf('mailto') !== -1
+        - newTab = false
+
+    a(class!=attributes.class
+        href=href
+        target=newTab ? '_blank' : false
+        rel=newTab ? 'nofollow' : false)
+
+        if block
+            block

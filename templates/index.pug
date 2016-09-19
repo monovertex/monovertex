@@ -24,7 +24,7 @@ html
     body
         .content-wrapper
             each column in columns
-                +column(column)(class=column.primary ? 'primary' : '')
+                +column(column)(class=column.primary ? 'primary' : false)
 
         if debug
             script(src='//localhost:35729/livereload.js')

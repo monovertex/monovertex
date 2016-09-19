@@ -39,6 +39,7 @@
         align-items: stretch;
 
         .logo {
+            display: block;
             padding-top: 20px;
 
             img {
@@ -76,6 +77,10 @@
 
         @media all and (max-width: $breakpoint-small) {
             padding-top: 30px;
+
+            .logo {
+                padding: 0;
+            }
         }
     }
 
@@ -123,6 +128,7 @@
     }
 
     .title {
+        display: block;
         padding: 80px 0;
         text-transform: uppercase;
         color: $primary-text-color;
