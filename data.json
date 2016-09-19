@@ -1,0 +1,84 @@
+{
+    "pageTitle": "Monovertex",
+    "columns": [
+        {
+            "primary": true,
+            "logoPath": "/assets/images/logo-monovertex.png",
+            "title": "Monovertex",
+            "info": [
+                { "text": "Stamate Cosmin-Stefan" },
+                { "text": "Web Developer", "class": "small" }
+            ],
+            "links": [
+                {
+                    "href": "mailto:contact@monovertex.com",
+                    "icon": "fa-envelope",
+                    "text": "contact@monovertex.com"
+                },
+                {
+                    "href": "https://github.com/monovertex",
+                    "icon": "fa-github",
+                    "text": "github.com/monovertex"
+                },
+                {
+                    "href": "https://monovertex.deviantart.com/",
+                    "icon": "fa-deviantart",
+                    "text": "monovertex.deviantart.com"
+                }
+            ]
+        },
+        {
+            "logoPath": "/assets/images/logo-sunforgecards.png",
+            "title": "Sunforge Cards",
+            "info": [
+                { "text": "I create 3D Hearthstone and <span class=\"non-breaking\">Yu-Gi-Oh!</span> cards or shadowboxes, as well as general paper craft.", "class": "small" },
+                { "text": "Follow my media channels to see more of my work!", "class": "small" }
+            ],
+            "links": [
+                {
+                    "href": "http://sunforgecards.com",
+                    "icon": "fa-home",
+                    "text": "sunforgecards.com"
+                },
+                {
+                    "href": "mailto:contact@sunforgecards.com",
+                    "icon": "fa-envelope",
+                    "text": "contact@sunforgecards.com"
+                },
+                [
+                    { "href": "http://yt.sunforgecards.com", "icon": "fa-youtube" },
+                    { "href": "https://www.facebook.com/sunforgecards/", "icon": "fa-facebook" },
+                    { "href": "https://twitter.com/sunforgecards", "icon": "fa-twitter" },
+                    { "href": "https://www.instagram.com/sunforgecards/", "icon": "fa-instagram" },
+                    { "href": "https://pinterest.com/sunforgecards/", "icon": "fa-pinterest" }
+                ]
+            ]
+        },
+        {
+            "logoPath": "/assets/images/logo-ygorganizer.png",
+            "title": "YGORganizer",
+            "info": [
+                { "text": "A <span class=\"non-breaking\">Yu-Gi-Oh!</span> card collection organizer, with card and price information constantly updated.", "class": "small" },
+                { "text": "Allows users to import and manage their personal collections.", "class": "small" }
+            ],
+            "links": [
+                {
+                    "href": "http://ygorganizer.com",
+                    "icon": "fa-home",
+                    "text": "ygorganizer.com"
+                },
+                {
+                    "href": "mailto:contact@ygorganizer.com",
+                    "icon": "fa-envelope",
+                    "text": "contact@ygorganizer.com"
+                },
+                {
+                    "href": "#",
+                    "icon": "hidden",
+                    "text": "",
+                    "class": "placeholder"
+                }
+            ]
+        }
+    ]
+}

@@ -14,7 +14,7 @@ html
         content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no'
     )
 
-    title Monovertex
+    title= pageTitle
 
     link(rel='stylesheet'
         href='https://fonts.googleapis.com/css?family=Open+Sans')
@@ -23,17 +23,8 @@ html
 
     body
         .content-wrapper
-            +column(
-                '/assets/images/logo-monovertex.png',
-                'Monovertex')(class='primary')
-
-            +column(
-                '/assets/images/logo-sunforgecards.png',
-                'Sunforge Cards')
-
-            +column(
-                '/assets/images/logo-ygorganizer.png',
-                'YGORganizer')
+            each column in columns
+                +column(column)(class=column.primary ? 'primary' : '')
 
         if debug
             script(src='//localhost:35729/livereload.js')

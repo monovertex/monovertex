@@ -1,11 +1,32 @@
 
-mixin column(logo, title)
+mixin column(data)
     .column(class!=attributes.class)
         .column-content
             section.logo-wrapper
                 .logo
-                    img(src=logo alt=title)
+                    img(src=data.logoPath alt=data.title)
 
             .info
                 .info-content
-                    section.title= title
+                    section.title= data.title
+                    section.description
+                        each paragraph in data.info
+                            p(class=paragraph.class ? paragraph.class : '')!= paragraph.text
+
+            section.links-wrapper
+                .links
+                    each link in data.links
+                        - var iconLinks = link instanceof Array
+
+                        .link-wrapper(
+                            class=link.class ? link.class : ''
+                            class=iconLinks ? 'icon-links' : '')
+
+                            if iconLinks
+                                each icon in link
+                                    a(href=icon.href target='_blank' rel='nofollow')
+                                        i.fa.fa-fw(class=icon.icon)
+                            else
+                                a(href=link.href target='_blank' rel='nofollow')
+                                    i.fa.fa-fw(class=link.icon)
+                                    = link.text

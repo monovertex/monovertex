@@ -1,5 +1,7 @@
 module.exports = function (grunt) {
 
+    var dataPath = './data.json';
+
     grunt.initConfig({
 
         pkg: grunt.file.readJSON('package.json'),
@@ -92,9 +94,12 @@ module.exports = function (grunt) {
             dev: {
                 options: {
                     pretty: true,
-                    data: {
-                        debug: true
-                    }
+                    data: function(dest, src) {
+                        var data = require(dataPath);
+                        data.debug = true;
+
+                        return data;
+                    },
                 },
                 files: {
                     '<%= targets.templates.dist %>':
@@ -103,9 +108,12 @@ module.exports = function (grunt) {
             },
             prod: {
                 options: {
-                    data: {
-                        debug: false
-                    }
+                    data: function(dest, src) {
+                        var data = require(dataPath);
+                        data.debug = false;
+
+                        return data;
+                    },
                 },
                 files: '<%= pug.dev.files %>'
             }
@@ -135,6 +143,7 @@ module.exports = function (grunt) {
             },
             templates: {
                 files: [
+                    dataPath,
                     '<%= targets.templates.src %>**/*.pug',
                 ],
                 tasks: ['pug:dev']
