@@ -1,6 +1,7 @@
 module.exports = function (grunt) {
 
-    var dataPath = './data.json';
+    var dataPath = './data.json',
+        imageminOptipng = require('imagemin-optipng');
 
     grunt.initConfig({
 
@@ -131,6 +132,21 @@ module.exports = function (grunt) {
             }
         },
 
+        imagemin: {
+            dist: {
+                options: {
+                    optimizationLevel: 4,
+                    use: [imageminOptipng()]
+                },
+                files: [{
+                    expand: true,
+                    cwd: '<%= targets.distBase %>assets/images',
+                    src: ['**/*.png'],
+                    dest: '<%= targets.distBase %>assets/images'
+                }]
+            }
+        },
+
         watch: {
             options: {
                 livereload: true,
@@ -164,6 +180,6 @@ module.exports = function (grunt) {
     grunt.registerTask('default', ['clean', 'styles', 'pug:dev', 'copy']);
 
     grunt.registerTask('prod', ['clean', 'sass:prod', 'postcss:prod',
-        'copy', 'pug:prod', 'htmlmin']);
+        'copy', 'pug:prod', 'htmlmin', 'imagemin']);
 
 };
