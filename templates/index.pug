@@ -16,10 +16,6 @@ html
 
     title= pageTitle
 
-    link(rel='stylesheet'
-        href='https://fonts.googleapis.com/css?family=Open+Sans')
-    link(rel='stylesheet'
-        href='/assets/styles.css')
     link(rel='shortcut icon'
         href='/favicon.png')
 
@@ -28,6 +24,6 @@ html
             each column in columns
                 +column(column)(class=column.primary ? 'primary' : false)
 
-        script(src='/assets/scripts.js')
+        script(src='/assets/scripts.js' async=true)
         if debug
             script(src='//localhost:35729/livereload.js')

@@ -60,9 +60,7 @@ module.exports = function (grunt) {
                 },
                 files: {
                     '<%= targets.scripts.dist %>': [
-                        '<%= targets.scripts.src %>fixes.js',
-
-                        '<%= targets.scripts.lib %>retinajs/dist/retina.js',
+                        '<%= targets.scripts.lib %>loadcss/src/loadCSS.js',
 
                         '<%= targets.scripts.src %>main.js',
                     ]
@@ -205,6 +203,21 @@ module.exports = function (grunt) {
             }
         },
 
+        compress: {
+            main: {
+                options: {
+                    mode: 'gzip'
+                },
+                expand: true,
+                cwd: '<%= targets.distBase %>',
+                src: ['**/*.{js,css,html}'],
+                dest: '<%= targets.distBase %>',
+                ext: function (ext) {
+                    return ext + '.gz';
+                }
+            }
+        },
+
         watch: {
             options: {
                 livereload: true,
@@ -248,6 +261,7 @@ module.exports = function (grunt) {
     grunt.registerTask('prod', ['clean',
         'sass:prod', 'postcss:prod',
         'jshint:prod', 'uglify:prod',
-        'copy', 'pug:prod', 'htmlmin', 'imagemin']);
+        'copy', 'pug:prod',
+        'htmlmin', 'compress', 'imagemin']);
 
 };

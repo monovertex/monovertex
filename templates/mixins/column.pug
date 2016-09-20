@@ -6,7 +6,9 @@ mixin column(data)
         .column-content
             section.logo-wrapper
                 +link(data.link, !data.primary)(class='logo')
-                    img(src=data.logoPath alt=data.title data-rjs='2')
+                    - var srcset2x = data.logoPath.replace('.png', '@2x.png') + ' 2x'
+
+                    img(src=data.logoPath alt=data.title srcset=srcset2x)
 
             .info
                 .info-content
