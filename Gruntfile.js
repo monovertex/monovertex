@@ -14,6 +14,11 @@ module.exports = function (grunt) {
                 src: '<%= targets.sourceBase %>styles/',
                 dist: '<%= targets.distBase %>assets/styles.css'
             },
+            scripts: {
+                src: '<%= targets.sourceBase %>scripts/',
+                lib: './bower_components/',
+                dist: '<%= targets.distBase %>assets/scripts.js'
+            },
             public: {
                 src: '<%= targets.sourceBase %>public/',
                 dist: '<%= targets.distBase %>'
@@ -22,6 +27,59 @@ module.exports = function (grunt) {
                 src: '<%= targets.sourceBase %>templates/',
                 dist: '<%= targets.distBase %>index.html'
             }
+        },
+
+        jshint: {
+            options: {
+                jshintrc: true
+            },
+            dev: {
+                options: {
+                    debug: true
+                },
+                src: '<%= targets.scripts.src %>**/*.js'
+            },
+            prod: {
+                options: {
+                    debug: false
+                },
+                src: [
+                    'Gruntfile.js',
+                    '<%= jshint.dev.src %>'
+                ],
+            },
+        },
+
+        uglify: {
+            dev: {
+                options: {
+                    compress: false,
+                    mangle: false,
+                    beautify: true,
+                    sourceMap: true
+                },
+                files: {
+                    '<%= targets.scripts.dist %>': [
+                        '<%= targets.scripts.src %>fixes.js',
+
+                        '<%= targets.scripts.lib %>retinajs/dist/retina.js',
+
+                        '<%= targets.scripts.src %>main.js',
+                    ]
+                }
+            },
+            prod: {
+                options: {
+                    mangle: {},
+                    screwIE8: true,
+                    preserveComments: false,
+                    compress: {
+                        drop_console: true
+                    },
+                    sourceMap: true,
+                },
+                files: '<%= uglify.dev.files %>'
+            },
         },
 
         clean: {
@@ -151,6 +209,12 @@ module.exports = function (grunt) {
             options: {
                 livereload: true,
             },
+            scripts: {
+                files: [
+                    '<%= targets.scripts.src %>**/*.js',
+                ],
+                tasks: ['scripts']
+            },
             styles: {
                 files: [
                     '<%= targets.styles.src %>**/*.scss',
@@ -175,11 +239,15 @@ module.exports = function (grunt) {
 
     require('load-grunt-tasks')(grunt);
 
+    grunt.registerTask('scripts', ['jshint:dev', 'uglify:dev']);
+
     grunt.registerTask('styles', ['sass:dev', 'postcss:dev']);
 
-    grunt.registerTask('default', ['clean', 'styles', 'pug:dev', 'copy']);
+    grunt.registerTask('default', ['clean', 'styles', 'scripts', 'pug:dev', 'copy']);
 
-    grunt.registerTask('prod', ['clean', 'sass:prod', 'postcss:prod',
+    grunt.registerTask('prod', ['clean',
+        'sass:prod', 'postcss:prod',
+        'jshint:prod', 'uglify:prod',
         'copy', 'pug:prod', 'htmlmin', 'imagemin']);
 
 };
