@@ -11,8 +11,9 @@ module.exports = function (grunt) {
             sourceBase: './',
             distBase: './dist/',
             styles: {
-                src: '<%= targets.sourceBase %>styles/',
-                dist: '<%= targets.distBase %>assets/styles.css'
+                base: '<%= targets.sourceBase %>styles/',
+                src: '<%= targets.styles.base %>src/',
+                build: '<%= targets.styles.base %>build/'
             },
             scripts: {
                 src: '<%= targets.sourceBase %>scripts/',
@@ -81,7 +82,8 @@ module.exports = function (grunt) {
         },
 
         clean: {
-            dist: '<%= targets.distBase %>*'
+            dist: '<%= targets.distBase %>*',
+            styles: '<%= targets.styles.build %>'
         },
 
         copy: {
@@ -92,6 +94,12 @@ module.exports = function (grunt) {
                         cwd: '<%= targets.public.src %>',
                         src: '**',
                         dest: '<%= targets.public.dist %>'
+                    },
+                    {
+                        expand: true,
+                        cwd: '<%= targets.styles.build %>',
+                        src: 'main.*',
+                        dest: '<%= targets.distBase %>assets/'
                     },
                     {
                         expand: true,
@@ -111,7 +119,10 @@ module.exports = function (grunt) {
                     sourceMap: true
                 },
                 files: {
-                    '<%= targets.styles.dist %>': '<%= targets.styles.src %>main.scss'
+                    '<%= targets.styles.build %>main.css':
+                        '<%= targets.styles.src %>main.scss',
+                    '<%= targets.styles.build %>critical.css':
+                        '<%= targets.styles.src %>critical.scss'
                 }
             },
             prod: {
@@ -130,7 +141,10 @@ module.exports = function (grunt) {
                         require('autoprefixer')({ browsers: '> 1%, last 4 versions' }),
                     ]
                 },
-                src: '<%= targets.styles.dist %>'
+                src: [
+                    '<%= targets.styles.build %>main.css',
+                    '<%= targets.styles.build %>critical.css'
+                ]
             },
             prod: {
                 options: {
@@ -237,6 +251,7 @@ module.exports = function (grunt) {
             templates: {
                 files: [
                     dataPath,
+                    '<%= targets.styles.build %>critical.css',
                     '<%= targets.templates.src %>**/*.pug',
                 ],
                 tasks: ['pug:dev']

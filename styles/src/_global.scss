@@ -15,36 +15,15 @@ html {
     }
 }
 
+a {
+    color: $secondary-text-color;
+}
+
 body {
     font-family: 'Open Sans', sans-serif;
     letter-spacing: 1.5px;
 }
 
-a {
-    color: $secondary-text-color;
-    transition: color $transition-duration;
-
-    &,
-    &:active,
-    &:hover,
-    &:focus,
-    &:visited {
-        text-decoration: none;
-    }
-
-    &:hover {
-        color: $highlight-color;
-    }
-}
-
-* {
-    box-sizing: border-box;
-}
-
 .non-breaking {
     white-space: nowrap;
-}
-
-.hidden {
-    visibility: hidden;
 }
