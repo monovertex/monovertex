@@ -16,10 +16,35 @@ html {
 }
 
 body {
-    font-family: 'Open Sans', sans-serif;
+    font-family: 'Open Sans', 'Helvetica', 'Verdana', sans-serif;
     letter-spacing: 1.5px;
 }
 
 .non-breaking {
     white-space: nowrap;
+}
+
+a {
+    transition: color $transition-duration;
+    color: $secondary-text-color;
+
+    &,
+    &:active,
+    &:hover,
+    &:focus,
+    &:visited {
+        text-decoration: none;
+    }
+
+    &:hover {
+        color: $highlight-color;
+    }
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+* {
+    box-sizing: border-box;
 }

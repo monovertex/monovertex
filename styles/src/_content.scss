@@ -46,6 +46,7 @@
             img {
                 max-height: 250px;
                 height: 100%;
+                width: auto;
                 vertical-align: top;
             }
         }
@@ -195,7 +196,7 @@
             i {
                 font-size: 1.3rem;
                 margin-right: 8px;
-                vertical-align: top;
+                vertical-align: text-top;
                 opacity: 0.2;
                 transition: opacity $transition-duration;
             }

@@ -8,7 +8,9 @@ mixin column(data)
                 +link(data.link, !data.primary)(class='logo')
                     - var srcset2x = data.logoPath.replace('.png', '@2x.png') + ' 2x'
 
-                    img(src=data.logoPath alt=data.title srcset=srcset2x)
+                    img(src=data.logoPath alt=data.title srcset=srcset2x
+                        width=data.logoDimensions.width
+                        height=data.logoDimensions.height)
 
             .info
                 .info-content

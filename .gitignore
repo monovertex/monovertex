@@ -6,3 +6,4 @@ bower_components
 dist
 .sublime*
 styles/build
+templates/build

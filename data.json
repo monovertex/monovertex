@@ -4,6 +4,10 @@
         {
             "primary": true,
             "logoPath": "/assets/images/logo-monovertex.png",
+            "logoDimensions": {
+                "width": 160,
+                "height": 160
+            },
             "title": "Monovertex",
             "link": "/",
             "info": [
@@ -30,6 +34,10 @@
         },
         {
             "logoPath": "/assets/images/logo-sunforgecards.png",
+            "logoDimensions": {
+                "width": 160,
+                "height": 160
+            },
             "title": "Sunforge Cards",
             "link": "http://sunforgecards.com",
             "info": [
@@ -58,6 +66,10 @@
         },
         {
             "logoPath": "/assets/images/logo-ygorganizer.png",
+            "logoDimensions": {
+                "width": 200,
+                "height": 160
+            },
             "title": "YGORganizer",
             "link": "http://ygorganizer.com",
             "info": [

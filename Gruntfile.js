@@ -9,7 +9,10 @@ module.exports = function (grunt) {
 
         targets: {
             sourceBase: './',
-            distBase: './dist/',
+            dist: {
+                base: './dist/',
+                assets: '<%= targets.dist.base %>assets/'
+            },
             styles: {
                 base: '<%= targets.sourceBase %>styles/',
                 src: '<%= targets.styles.base %>src/',
@@ -18,15 +21,16 @@ module.exports = function (grunt) {
             scripts: {
                 src: '<%= targets.sourceBase %>scripts/',
                 lib: './bower_components/',
-                dist: '<%= targets.distBase %>assets/scripts.js'
+                dist: '<%= targets.dist.assets %>main.js'
             },
             public: {
                 src: '<%= targets.sourceBase %>public/',
-                dist: '<%= targets.distBase %>'
+                dist: '<%= targets.dist.base %>'
             },
             templates: {
-                src: '<%= targets.sourceBase %>templates/',
-                dist: '<%= targets.distBase %>index.html'
+                base: '<%= targets.sourceBase %>templates/',
+                src: '<%= targets.templates.base %>src/',
+                build: '<%= targets.templates.base %>build/',
             }
         },
 
@@ -82,8 +86,9 @@ module.exports = function (grunt) {
         },
 
         clean: {
-            dist: '<%= targets.distBase %>*',
-            styles: '<%= targets.styles.build %>'
+            dist: '<%= targets.dist.base %>*',
+            styles: '<%= targets.styles.build %>',
+            templates: '<%= targets.templates.build %>'
         },
 
         copy: {
@@ -98,14 +103,14 @@ module.exports = function (grunt) {
                     {
                         expand: true,
                         cwd: '<%= targets.styles.build %>',
-                        src: 'main.*',
-                        dest: '<%= targets.distBase %>assets/'
+                        src: '*.css',
+                        dest: '<%= targets.dist.assets %>'
                     },
                     {
                         expand: true,
-                        cwd: './bower_components/font-awesome/fonts/',
-                        src: '**',
-                        dest: '<%= targets.public.dist %>/assets/fonts/'
+                        cwd: '<%= targets.templates.build %>',
+                        src: '*.html',
+                        dest: '<%= targets.dist.base %>'
                     },
                 ],
             },
@@ -120,9 +125,7 @@ module.exports = function (grunt) {
                 },
                 files: {
                     '<%= targets.styles.build %>main.css':
-                        '<%= targets.styles.src %>main.scss',
-                    '<%= targets.styles.build %>critical.css':
-                        '<%= targets.styles.src %>critical.scss'
+                        '<%= targets.styles.src %>main.scss'
                 }
             },
             prod: {
@@ -142,8 +145,7 @@ module.exports = function (grunt) {
                     ]
                 },
                 src: [
-                    '<%= targets.styles.build %>main.css',
-                    '<%= targets.styles.build %>critical.css'
+                    '<%= targets.styles.build %>main.css'
                 ]
             },
             prod: {
@@ -173,7 +175,7 @@ module.exports = function (grunt) {
                     },
                 },
                 files: {
-                    '<%= targets.templates.dist %>':
+                    '<%= targets.templates.build %>index.html':
                         ['<%= targets.templates.src %>index.pug']
                 }
             },
@@ -197,7 +199,7 @@ module.exports = function (grunt) {
                     collapseWhitespace: true
                 },
                 files: {
-                    '<%= targets.distBase %>index.html': '<%= targets.distBase %>index.html',
+                    '<%= targets.dist.base %>index.html': '<%= targets.dist.base %>index.html',
                 }
             }
         },
@@ -210,9 +212,9 @@ module.exports = function (grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: '<%= targets.distBase %>assets/images',
+                    cwd: '<%= targets.dist.assets %>images',
                     src: ['**/*.png'],
-                    dest: '<%= targets.distBase %>assets/images'
+                    dest: '<%= targets.dist.assets %>images'
                 }]
             }
         },
@@ -223,12 +225,37 @@ module.exports = function (grunt) {
                     mode: 'gzip'
                 },
                 expand: true,
-                cwd: '<%= targets.distBase %>',
+                cwd: '<%= targets.dist.base %>',
                 src: ['**/*.{js,css,html}'],
-                dest: '<%= targets.distBase %>',
+                dest: '<%= targets.dist.base %>',
                 ext: function (ext) {
                     return ext + '.gz';
                 }
+            }
+        },
+
+        critical: {
+            main: {
+                options: {
+                    base: './',
+                    css: [
+                        '<%= targets.dist.assets %>main.css'
+                    ],
+                    dimensions: [{
+                        width: 1920,
+                        height: 1800
+                    },
+                    {
+                        width: 1366,
+                        height: 700
+                    },
+                    {
+                        width: 500,
+                        height: 900
+                    }]
+                },
+                src: '<%= targets.dist.base %>index.html',
+                dest: '<%= targets.dist.base %>index.html'
             }
         },
 
@@ -246,15 +273,14 @@ module.exports = function (grunt) {
                 files: [
                     '<%= targets.styles.src %>**/*.scss',
                 ],
-                tasks: ['styles']
+                tasks: ['styles', 'templates']
             },
             templates: {
                 files: [
                     dataPath,
-                    '<%= targets.styles.build %>critical.css',
                     '<%= targets.templates.src %>**/*.pug',
                 ],
-                tasks: ['pug:dev']
+                tasks: ['templates']
             },
             public: {
                 files: [
@@ -271,12 +297,14 @@ module.exports = function (grunt) {
 
     grunt.registerTask('styles', ['sass:dev', 'postcss:dev']);
 
-    grunt.registerTask('default', ['clean', 'styles', 'scripts', 'pug:dev', 'copy']);
+    grunt.registerTask('templates', ['pug:dev', 'copy']);
+
+    grunt.registerTask('default', ['clean', 'styles', 'scripts', 'templates']);
 
     grunt.registerTask('prod', ['clean',
         'sass:prod', 'postcss:prod',
         'jshint:prod', 'uglify:prod',
-        'copy', 'pug:prod',
+        'pug:prod', 'copy', 'critical',
         'htmlmin', 'compress', 'imagemin']);
 
 };
