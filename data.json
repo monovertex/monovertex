@@ -13,17 +13,17 @@
             "links": [
                 {
                     "href": "mailto:contact@monovertex.com",
-                    "icon": "fa-envelope",
+                    "icon": "envelope",
                     "text": "contact@monovertex.com"
                 },
                 {
                     "href": "https://github.com/monovertex",
-                    "icon": "fa-github",
+                    "icon": "github",
                     "text": "github.com/monovertex"
                 },
                 {
                     "href": "https://monovertex.deviantart.com/",
-                    "icon": "fa-deviantart",
+                    "icon": "deviantart",
                     "text": "monovertex.deviantart.com"
                 }
             ]
@@ -39,20 +39,20 @@
             "links": [
                 {
                     "href": "http://sunforgecards.com",
-                    "icon": "fa-home",
+                    "icon": "home",
                     "text": "sunforgecards.com"
                 },
                 {
                     "href": "mailto:contact@sunforgecards.com",
-                    "icon": "fa-envelope",
+                    "icon": "envelope",
                     "text": "contact@sunforgecards.com"
                 },
                 [
-                    { "href": "http://yt.sunforgecards.com", "icon": "fa-youtube" },
-                    { "href": "https://www.facebook.com/sunforgecards/", "icon": "fa-facebook" },
-                    { "href": "https://twitter.com/sunforgecards", "icon": "fa-twitter" },
-                    { "href": "https://www.instagram.com/sunforgecards/", "icon": "fa-instagram" },
-                    { "href": "https://pinterest.com/sunforgecards/", "icon": "fa-pinterest" }
+                    { "href": "http://yt.sunforgecards.com", "icon": "youtube" },
+                    { "href": "https://www.facebook.com/sunforgecards/", "icon": "facebook" },
+                    { "href": "https://twitter.com/sunforgecards", "icon": "twitter" },
+                    { "href": "https://www.instagram.com/sunforgecards/", "icon": "instagram" },
+                    { "href": "https://pinterest.com/sunforgecards/", "icon": "pinterest" }
                 ]
             ]
         },
@@ -67,12 +67,12 @@
             "links": [
                 {
                     "href": "http://ygorganizer.com",
-                    "icon": "fa-home",
+                    "icon": "home",
                     "text": "ygorganizer.com"
                 },
                 {
                     "href": "mailto:contact@ygorganizer.com",
-                    "icon": "fa-envelope",
+                    "icon": "envelope",
                     "text": "contact@ygorganizer.com"
                 },
                 {

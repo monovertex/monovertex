@@ -19,8 +19,8 @@ html
     link(rel='shortcut icon'
         href='/favicon.png')
 
-    style
-        include ../styles/build/critical.css
+    if debug
+        link(rel='stylesheet' href='/assets/main.css')
 
     body
         .content-wrapper

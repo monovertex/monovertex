@@ -30,8 +30,8 @@ mixin column(data)
                             if iconLinks
                                 each icon in l
                                     +link(icon.href, true)
-                                        i.fa.fa-fw(class=icon.icon)
+                                        i.icon-fw(class='icon-' + icon.icon)
                             else
                                 +link(l.href, true)
-                                    i.fa.fa-fw(class=l.icon)
+                                    i.icon-fw(class='icon-' + l.icon)
                                     = l.text

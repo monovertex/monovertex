@@ -4,6 +4,7 @@
 
 a {
     transition: color $transition-duration;
+    color: $secondary-text-color;
 
     &,
     &:active,
@@ -62,12 +63,11 @@ body,
     }
 }
 
-@media all and (max-width: $breakpoint-medium) {
+@media all and (max-width: $breakpoint-small) {
 
     .column {
         float: none;
         width: 100%;
         margin-bottom: 30px;
-        height: auto;
     }
 }
